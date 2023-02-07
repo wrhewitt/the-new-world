@@ -8,7 +8,12 @@ steps:
       echo "***********************"
       echo "$BRANCH_NAME"
       echo "***********************"
-
+- id: Build
+  name: gcr.io/cloud-builders/docker
+  args: [ 'build', '-t', 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest', 'ui' ]
+- id: Push
+  name: gcr.io/cloud-builders/docker
+  args: [ 'push', 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest' ]
 - id: 'tf init'
   name: 'hashicorp/terraform:1.0.0'
   entrypoint: 'sh'
