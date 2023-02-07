@@ -10,13 +10,11 @@ steps:
       echo "***********************"
 - id: Build
   name: gcr.io/cloud-builders/docker
+  entrypoint: 'sh'  
   args:
-    - build
-    - '--no-cache'
-    - '-t'
-    - 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest'
-    - '-f'
-    - '/ui/Dockerfile'
+    - '-c'
+    - | 
+        cd ui && docker build . --no-cache -t us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest -f /ui/Dockerfile
 - id: Push
   name: gcr.io/cloud-builders/docker
   args:
