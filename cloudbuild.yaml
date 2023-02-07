@@ -15,9 +15,8 @@ steps:
     - '--no-cache'
     - '-t'
     - 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest'
-    - the-new-world
     - '-f'
-    - ui/Dockerfile
+    - '/ui/Dockerfile'
 - id: Push
   name: gcr.io/cloud-builders/docker
   args:
