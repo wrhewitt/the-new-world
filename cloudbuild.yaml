@@ -1,6 +1,6 @@
 steps:
 - id: Build
-  name: us.gcr.io/cloud-builders/docker
+  name: gcr.io/cloud-builders/docker
   args:
     - build
     - '--no-cache'
@@ -10,7 +10,7 @@ steps:
     - '-f'
     - ui/Dockerfile
 - id: Push
-  name: us.gcr.io/cloud-builders/docker
+  name: gcr.io/cloud-builders/docker
   args:
     - push
     - 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest'
