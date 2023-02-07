@@ -1,31 +1,19 @@
 steps:
-  - name: us.gcr.io/cloud-builders/docker
-    args:
-      - build
-      - '--no-cache'
-      - '-t'
-      - 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest'
-      - the-new-world
-      - '-f'
-      - ui/Dockerfile
-    id: Build
-  - name: us.gcr.io/cloud-builders/docker
-    args:
-      - push
-      - 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest'
-    id: Push
-- id: 'branch name'
-  name: 'alpine'
-  entrypoint: 'sh'  
-  args: 
-  - '-c'
-  - | 
-    steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'us-west2-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1', '.' ]
-  images:
-  - 'us-west2-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
-
+- id: Build
+  name: us.gcr.io/cloud-builders/docker
+  args:
+    - build
+    - '--no-cache'
+    - '-t'
+    - 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest'
+    - the-new-world
+    - '-f'
+    - ui/Dockerfile
+- id: Push
+  name: us.gcr.io/cloud-builders/docker
+  args:
+    - push
+    - 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest'
 - id: 'tf init'
   name: 'hashicorp/terraform:1.0.0'
   entrypoint: 'sh'
