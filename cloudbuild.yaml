@@ -1,16 +1,14 @@
 steps:
-- id: 'branch name'
-  name: 'alpine'
-  entrypoint: 'sh'  
-  args: 
-  - '-c'
-  - | 
-      echo "***********************"
-      echo "$BRANCH_NAME"
-      echo "***********************"
+- name: gcr.io/cloud-builders/docker
+  entrypoint: bash
+  args:
+    - '-c'
+    - >-
+      docker pull us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest
+      || exit 0
 - id: Build
   name: gcr.io/cloud-builders/docker
-  args: [ 'build', '-t', 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest', 'ui' ]
+  args: ['build','-t','us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest','--cache-from','$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/the-new-world:latest','ui']
 - id: Push
   name: gcr.io/cloud-builders/docker
   args: [ 'push', 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest' ]
