@@ -7,8 +7,9 @@ steps:
   name: gcr.io/cloud-builders/docker
   args: [ 'push', 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:$SHORT_SHA' ]
 - id: Deploy
-  name: gcr.io/cloud-builders/docker
-  args: [ 'gcloud', 'run', 'services', 'update', 'the-new-world', '--image=us.gcr.io/the-new-world-376918/the-new-world/the-new-world:$SHORT_SHA', '--region=us-central1', '--quiet' ]
+  name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  entrypoint: gcloud
+  args: [ 'run', 'services', 'update', 'the-new-world', '--image=us.gcr.io/the-new-world-376918/the-new-world/the-new-world:$SHORT_SHA', '--region=us-central1']
 - id: 'tf init'
   name: 'hashicorp/terraform:1.0.0'
   entrypoint: 'sh'
