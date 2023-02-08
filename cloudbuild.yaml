@@ -8,7 +8,7 @@ steps:
   args: [ 'push', 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:$SHORT_SHA' ]
 - id: Deploy
   name: gcr.io/cloud-builders/docker
-  args: [ 'gcloud', 'run', 'services', 'update', 'the-new-world', '--platform=managed', '--image=us.gcr.io/the-new-world-376918/the-new-world/the-new-world:$SHORT_SHA', '--region=us-central1', '--quiet' ]
+  args: [ 'gcloud', 'run', 'services', 'update', 'the-new-world', '--image=us.gcr.io/the-new-world-376918/the-new-world/the-new-world:$SHORT_SHA', '--region=us-central1', '--quiet' ]
 - id: 'tf init'
   name: 'hashicorp/terraform:1.0.0'
   entrypoint: 'sh'
