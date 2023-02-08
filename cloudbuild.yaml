@@ -1,11 +1,14 @@
 steps:
 - id: Build
   name: gcr.io/cloud-builders/docker
-  args: ['build','-t','us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest','ui']
+  args: ['build','-t','us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:$SHORT_SHA','ui']
   secretEnv: ['REDIS_URL', 'NEXT_PUBLIC_AUTH0_CLIENT_ID','NEXT_PUBLIC_AUTH0_DOMAIN','NEXT_PUBLIC_AUTH0_ADMIN_EMAIL']
 - id: Push
   name: gcr.io/cloud-builders/docker
-  args: [ 'push', 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:latest' ]
+  args: [ 'push', 'us.gcr.io/$PROJECT_ID/$REPO_NAME/the-new-world:$SHORT_SHA' ]
+- id: Deploy
+  name: gcr.io/cloud-builders/docker
+  args: [ 'gcloud', 'run', 'services', 'update', 'the-new-world', '--platform=managed', '--image=us.gcr.io/the-new-world-376918/the-new-world/the-new-world:$SHORT_SHA', '--region=us-central1', '--quiet' ]
 - id: 'tf init'
   name: 'hashicorp/terraform:1.0.0'
   entrypoint: 'sh'
