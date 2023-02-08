@@ -1,5 +1,6 @@
 steps:
 - id: Build
+  name: gcr.io/cloud-builders/docker
   entrypoint: bash
   args: 
       - -c
