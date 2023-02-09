@@ -11,6 +11,7 @@ ENV NODE_ENV production
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+RUN ls
 
 ARG REDIS_URL $REDIS_URL
 ARG NEXT_PUBLIC_AUTH0_CLIENT_ID $NEXT_PUBLIC_AUTH0_CLIENT_ID
