@@ -1,6 +1,5 @@
 import Container from '../components/container'
 import Image from 'next/image'
-import cloudStorage from '../lib/cloudStorage'
 
 function HomePage() {
   return (
