@@ -3,11 +3,11 @@ import Container from '../components/container'
 
 export default function Header() {
   return (
-    <header className="py-6">
+    <header className="bg-black">
       <Container>
-        <nav className="flex space-x-4">
-          <Link href="/">About</Link>
-          <Link href="/posts">Posts</Link>
+        <nav className="flex">
+          <Link className="text-2xl rounded hover:bg-white py-3 px-3" href="/">About</Link>
+          <Link className="text-2xl rounded hover:bg-white py-3 px-3" href="/posts">Posts</Link>
         </nav>
       </Container>
     </header>
