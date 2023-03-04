@@ -15,6 +15,7 @@ export type Comment = {
 
 export type Post = {
   slug?: string
+  imageURL?: string 
   title?: string
   author?: string
   date?: Date
