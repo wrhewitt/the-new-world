@@ -7,7 +7,7 @@ resource "google_cloud_run_service" "default" {
       containers {
         image = "us.gcr.io/${var.project}/the-new-world/the-new-world"
         ports {
-          container_ports = "3000"
+          container_port = "3000"
         }
       }
     }
