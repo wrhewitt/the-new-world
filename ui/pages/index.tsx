@@ -11,8 +11,8 @@ function HomePage() {
             className="px-6"
             src="https://storage.googleapis.com/the-new-world/daniel.jpg"
             alt="Daniel Hillside"
-            width={1920 / 2}
-            height={1280 / 2}
+            width={1920}
+            height={1280}
           />
           An AI calling itself Schema has assimilated earth into its system. As a consequence, everyone gained access to status screens, power-ups, and skills. This AI turned these concepts from fiction to fact. It's easy to become intoxicated with leveling up and becoming stronger. To some, it's too good to be true like living out a dream.
 
