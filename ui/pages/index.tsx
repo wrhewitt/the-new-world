@@ -1,6 +1,6 @@
 import Container from '../components/container'
 import Image from 'next/image'
-import cloudStorage from '../lib/cloudStorage'
+import { getAllPosts } from '../lib/getPost'
 
 function HomePage() {
   return (
@@ -23,9 +23,16 @@ He's in a bit of a predicament. Cracks in our dimensional fabric have unleashed 
 Kill or be killed.
         </div>
       </Container>
-     
     </>
   )
 }
 
 export default HomePage
+
+export async function getStaticProps() {
+  const allPosts = getAllPosts(['slug', 'title', 'excerpt', 'date'])
+
+  return {
+    props: { allPosts },
+  }
+}
