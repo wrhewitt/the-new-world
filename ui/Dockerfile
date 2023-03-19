@@ -54,7 +54,6 @@ COPY --from=builder /app/next.config.js next.config.js
 USER nextjs
 
 EXPOSE 3000
-EXPOSE 6379
 
 ENV PORT 3000
 
